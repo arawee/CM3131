@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Snoke</title>
+
+    <!-- Import Ionic -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+
+    <!-- Import font and own stylesheets -->
+    <link rel="stylesheet" href="./assets/font/stylesheet.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Import chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <ion-app class="ion-app">
+        <ion-content fullscreen class="ion-no-padding" color="primary">
+
+            <!--Menu (overlay)-->
+            <ion-list id="menu">
+
+                <!-- Exit menu button -->
+                <ion-item class="ion-padding-bottom">
+                    <ion-img onclick="toggleMenu()" id="top-star"  src="./assets/close-star.svg"></ion-img>
+                </ion-item>
+
+                <!-- Exit menu links -->
+                <ion-item class="ion-padding-top ion-padding-start" button onclick="scrollToHeading('anchor-home')">
+                    <ion-label>
+                        <h1>Home</h1>
+                    </ion-label>
+                </ion-item>
+                <ion-item button class="ion-padding-start" onclick="scrollToHeading('anchor-stats')">
+                    <ion-label>
+                        <h1>Stats</h1>
+                    </ion-label>
+                </ion-item>
+                <ion-item button class="ion-padding-start" onclick="scrollToHeading('anchor-settings')">
+                    <ion-label>
+                        <h1>Settings</h1>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+
+            <!-- Modal for recieving a tip when "Snoking" -->
+            <ion-modal id="dont-modal" trigger="dont-button">
+
+                <!-- Exit modal button -->
+                <ion-button id="popup-button" style="--background: translucent;" onclick="modal.dismiss()">
+                    <ion-img id="close-popup-icon" src="./assets/close-star.svg"></ion-img>
+                </ion-button>
+
+                <!-- Random illustration -->
+                <ion-item style="--background: translucent; pointer-events: none;">
+                    <ion-img id="random-tip-img" class="invert"></ion-img>
+                </ion-item>
+
+                <!-- Random tip for stopping smoking from the API -->
+                <ion-item style="--background: translucent;">
+                    <ion-text id="tip-container" color="primary">
+                        <p id="tip-text"></p>
+                    </ion-text>
+                </ion-item>
+
+                <!-- Button to log a "Snoke" -->
+                <ion-item style="--background: translucent;">
+                    <ion-button id="didnt-button" class="broke-button" style="--background:#00000000" onclick="logSnoke(true)" shape="round">
+                        Log my Snoke!
+                    </ion-button>
+                </ion-item>
+            </ion-modal>
+
+            <!-- Same, same, but not the same -->
+            <ion-modal id="broke-modal" trigger="broke-button">
+                <ion-button id="popup-button" style="--background: translucent;" onclick="modal.dismiss()">
+                    <ion-img id="close-popup-icon" src="./assets/close-star.svg"></ion-img>
+                </ion-button>
+                <ion-item style="--background: translucent; pointer-events: none;">
+                    <ion-img id="random-tip-img" class="invert"></ion-img>
+                </ion-item>
+                <ion-item style="--background: translucent;">
+                    <ion-text id="tip-container" color="primary">
+                        <p id="tip-text"></p>
+                    </ion-text>
+                </ion-item>
+                <ion-item style="--background: translucent;">
+                    <ion-button id="broken-button" class="broke-button" style="--background:#00000000" onclick="logSnoke(true)" shape="round">
+                        Still smoking.
+                    </ion-button>
+                </ion-item>
+            </ion-modal>
+
+            <!-- Header bar with logo and menu button -->
+            <div fixed id="anchor-home" class='ion-no-padding'>
+                <ion-img onclick="toggleMenu()" class="invert" id="top-burger"  src="./assets/burger.svg"></ion-img>
+                <ion-img class="invert" id="top-logo" src="./assets/logo-snoke.svg"></ion-img>
+            </div>
+
+            <!-- Time counter -->
+            <ion-card fullscreen id="main-timer" class="ion-text-center" color="primary">
+                <h1 id="counter-days" class="invert">0 Days</h1>
+                <p id="counter-more" class="invert">0 Hour, 0 minutes, 0 seconds</p>
+            </ion-card>
+
+            <!-- "logo" background, text and buttons -->
+            <div id="logo-bg" fullscreen class="ion-no-padding" style="background-color: rgb(29, 29, 29);">
+                <div id="square-text">
+                    <ion-img src="./assets/break-icon.svg"></ion-img>
+                    <ion-text id="anchor-stats" color="primary">
+                        <p>Feeling like having one?</p>
+                    </ion-text>
+                    <ion-button id="dont-button" style="--background: translucent;" shape="round">
+                        Snoke
+                    </ion-button>
+                </div>
+                <div id="logo-square"></div>
+                <div id="circle-text">
+                    <ion-button id="broke-button" class="broke-button" style="--background: translucent;" onclick="logSmoking(false)" shape="round">
+                        Broke the streak...
+                    </ion-button>
+                </div>
+                <div id="logo-circle"></div>
+            </div>
+
+            <!-- Stats – "Chart.js" in a card-->
+            <ion-card fullscreen id="stats-head" class="ion-no-padding" style="--background: #e2e2e2">
+                <ion-card-header>
+                    <ion-card-title><h2 class="invert">Stats</h2></ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <canvas id="myChart"></canvas>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- Settings as a grid, I don't know how it happened, but why not -->
+            <ion-item id="settings-item" style="--background: translucent; --inner-border-width: 0;">
+                <ion-grid fixed>
+                    <ion-label>
+                        <h2 id="anchor-settings" class="invert">Settings</h2>
+                    </ion-label>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-toggle id="dont-toggle" checked="true" class="invert" onclick="changeSetting(this, 'dont')" color="success"><p>Display a tip when "Snoking"</p></ion-toggle>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-toggle id="broke-toggle" checked="false" class="invert" onclick="changeSetting(this, 'broke')" color="success"><p>Display a tip when smoking</p></ion-toggle>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-toggle id="snoke-timer-toggle" checked="false" class="invert" onclick="changeSetting(this, 'snoking-timer')" color="success"><p>Reset timer when "Snoking" (saves your time)</p></ion-toggle>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+
+            <!-- Tiny foooter -->
+            <ion-item class="invert" style="color: #2e2e2e">
+                <ion-label>project for CM3131</ion-label>
+                <ion-label slot="end">Adam Kraus</ion-label>
+            </ion-item>
+        </ion-content>
+    </ion-app>
+
+    <!-- Import DB and App Javascript -->
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

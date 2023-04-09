@@ -1,0 +1,231 @@
+/* Set custom ionic colours */
+:root {
+    --ion-color-primary: #1D1D1D;
+    --ion-color-secondary: #e1e1e1;
+    --ion-font-family: "IBM Plex Sans";
+    --ion-color-translucent: #00000000;
+}
+
+/* Set general styles */
+body, ion-content{
+    color: #e5ecef;
+    font-family: 'IBM Plex Sans';
+    font-weight: bold;
+}
+p {
+    font-size: 0.75rem;
+}
+ion-button {
+    text-transform: none;
+}
+ion-item h1 {
+    font-size: 4rem !important;
+    font-weight: bold !important;
+}
+
+ion-item h2 {
+    font-size: 3rem !important;
+    font-weight: bold !important;
+    padding: 1rem 0;
+}
+
+/* Inverts base colour */
+.invert {
+    color: white;
+    mix-blend-mode: difference;
+}
+
+/* Header logo */
+#top-logo {
+    transform: translateX(-50%);
+    left: 50%;
+    padding-top: 2rem;
+    width: 120px;
+    z-index: 100;
+    display: block;
+    margin: auto;
+    position: fixed !important;
+}
+
+/* Menu open and close buttons */
+#top-burger, #top-star {
+    position: fixed;
+    z-index: 10;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 999 !important;
+    padding: 0.5rem;
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
+    transition: 0.3s opacity;
+}
+#top-burger {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+/* Main timer text */
+#main-timer {
+    padding: 4rem 0;
+    box-shadow: none;
+    margin: 0;
+    padding: 5rem 0rem;
+}
+#counter-days {
+    font-weight: bold;
+    padding-top: 1rem;
+    font-size: 5rem;
+}
+#counter-more {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Style "logo" background blocks */
+#logo-bg{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 90vw;
+}
+#logo-bg > *{
+    position: absolute;
+}
+#logo-square {
+    width: 90%;
+    aspect-ratio: 1/1;
+    transform: translateX(-48.65%);
+    background-color: #e2e2e2;
+}
+#logo-circle {
+    width: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    transform: translateX(58.65%);
+    background-color: #e2e2e2;
+}
+
+/* Logo-background content contents*/
+#square-text {
+    z-index: 10;
+    text-align: center;
+    left: calc((41.35% - 122px) / 2);
+    padding-top: calc(20%);
+}
+#square-text ion-img {
+    width: 106px;
+    padding-bottom: 1rem;
+    height: auto;
+    margin: auto;
+}
+#dont-button {
+    height: 2rem;
+    width: 134px;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+    background: #1D1D1D;
+    border-radius: 2rem;
+    transition: background-color 0.6s !important;
+    --background-activated: #2b951f;
+}
+#circle-text {
+    position: absolute;
+    z-index: 10;
+    right: -2.5rem;
+    top: calc(20rem + 45vw);
+    transform-origin: center;
+    transform: rotate(-90deg);
+}
+.broke-button {
+    color: #1D1D1D;
+    border-radius: 2rem;
+    border: #1D1D1D 2px solid;
+    font-size: 0.75rem;
+    height: 3rem;
+    width: 12rem;
+    font-weight: bold;
+    transition: all 0.6s;
+    --background-activated: #b91b1b;
+}
+#dont-button:focus, #dont-button:hover {
+    background: #2b951f !important;
+}
+#broke-button:focus, #broke-button:hover {
+    background: #b91b1b !important;
+    border: none;
+    color: #e1e1e1;
+}
+
+/* Stats Style */
+#stats-head {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+#stats-head h2 {
+    margin: 0 0;
+    font-size: 3rem;
+    font-weight: bold !important;
+}
+
+/* Settings Style */
+#settings-item {
+    margin-bottom: 4.5rem;
+}
+
+/* Menu (overlay) */
+#menu {
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s opacity;
+    --ion-item-background:#E1E1E1;
+}
+#menu > *, ion-modal ion-item {
+    --inner-border-width: 0 0 0 0 !important;
+}
+
+
+/* Modals */
+ion-modal {
+    --width: 90vw;
+    --height: calc(20 * ( 90vw / 17 ));
+    --box-shadow: 0 10px 15px -3px #00000011;
+    --background: var(--ion-color-secondary);
+}
+ion-modal #popup-button {
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    pointer-events: all;
+    right: 0;
+    z-index: 1000;
+}
+ion-modal::part(backdrop) {
+    opacity: 1;
+}
+ion-modal ion-toolbar {
+    --color: white;
+    --background: var(--ion-color-secondary);
+}
+#close-popup-icon {
+    height: 2rem;
+}
+#tip-container {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+#random-tip-img {
+    width: 50%;
+    height: 50%;
+    margin: 25% 25% 0 25% ;
+}
+#didnt-button, #broken-button {
+    margin: auto;
+    margin-bottom: 2rem;
+}
