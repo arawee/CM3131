@@ -39,7 +39,7 @@ App designed to aid stopping smoking. It allows logging your smokes and displays
     - live iOS/Android testing
     
 
-###Technical
+#### Technical
 
 |      Case       |      Result     |
 | --------------- | --------------- |
@@ -49,7 +49,7 @@ App designed to aid stopping smoking. It allows logging your smokes and displays
 | See statistics  |       Pass      |
 | Change setting  |       Pass      |
 
-###UX/UI
+#### UX/UI
 
 |           Case           |      Result     |
 | ------------------------ | --------------- |
@@ -57,13 +57,13 @@ App designed to aid stopping smoking. It allows logging your smokes and displays
 |     Minimise input <sup>2)</sup>    |       Pass      |
 |Minimise cognitive load <sup>3)</sup>|       Pass      |
 |  Non-repetetive info <sup>4)</sup>  |       Pass      |
-|  Display Snoke on graph  |       Fail      |
-|         Tutorial         |     On Hold     |
+|        Display Snoke on graph       |       Fail      |
+|               Tutorial              |     On Hold     |
 
-1) Added on-hover + transform to relevant elements (also smooth scroll on menu orientation)
+<sup>1) Added on-hover + transform to relevant elements (also smooth scroll on menu orientation)
 2) Redesigned main screen –> simplified and enlarged elements, added functionality
 3) Changed the architecture to a "finite feed" with anchors
-4) Is now choosing different tip for stopping smoking and illustration in modals (popup windows).
+4) Is now choosing different tip for stopping smoking and illustration in modals (popup windows).</sup>
 
 ----------
 
