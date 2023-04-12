@@ -29,7 +29,7 @@ App designed to aid stopping smoking. It allows logging your smokes and displays
 
 ----------
 
-### Teting
+### Testing
 - Visual Studio Code
     - Live server extension
 - Google Chrome DevTools
@@ -39,7 +39,7 @@ App designed to aid stopping smoking. It allows logging your smokes and displays
     - live iOS/Android testing
     
 
-####Technical
+###Technical
 
 |      Case       |      Result     |
 | --------------- | --------------- |
@@ -49,14 +49,14 @@ App designed to aid stopping smoking. It allows logging your smokes and displays
 | See statistics  |       Pass      |
 | Change setting  |       Pass      |
 
-####UX/UI
+###UX/UI
 
 |           Case           |      Result     |
 | ------------------------ | --------------- |
-|     Responsiveness 1)    |       Pass      |
-|     Minimise input 2)    |       Pass      |
-|Minimise cognitive load 3)|       Pass      |
-|  Non-repetetive info 4)  |       Pass      |
+|     Responsiveness <sup>1)</sup>    |       Pass      |
+|     Minimise input <sup>2)</sup>    |       Pass      |
+|Minimise cognitive load <sup>3)</sup>|       Pass      |
+|  Non-repetetive info <sup>4)</sup>  |       Pass      |
 |  Display Snoke on graph  |       Fail      |
 |         Tutorial         |     On Hold     |
 
