@@ -29,6 +29,44 @@ App designed to aid stopping smoking. It allows logging your smokes and displays
 
 ----------
 
+### Teting
+- Visual Studio Code
+    - Live server extension
+- Google Chrome DevTools
+    - Testing on iPhone SE
+    - Minimum width tested for: 320px
+- LambdaTest
+    - live iOS/Android testing
+    
+
+####Technical
+
+|      Case       |      Result     |
+| --------------- | --------------- |
+|     Open App    |       Pass      |
+|    Log smoke    |       Pass      |
+|    Log Snoke    |       Pass      |
+| See statistics  |       Pass      |
+| Change setting  |       Pass      |
+
+####UX/UI
+
+|           Case           |      Result     |
+| ------------------------ | --------------- |
+|     Responsiveness 1)    |       Pass      |
+|     Minimise input 2)    |       Pass      |
+|Minimise cognitive load 3)|       Pass      |
+|  Non-repetetive info 4)  |       Pass      |
+|  Display Snoke on graph  |       Fail      |
+|         Tutorial         |     On Hold     |
+
+1) Added on-hover + transform to relevant elements (also smooth scroll on menu orientation)
+2) Redesigned main screen –> simplified and enlarged elements, added functionality
+3) Changed the architecture to a "finite feed" with anchors
+4) Is now choosing different tip for stopping smoking and illustration in modals (popup windows).
+
+----------
+
 ### DEMO DATA
 
 To remove demo data:
@@ -44,6 +82,7 @@ To remove demo data:
 ### Refernces
 - NHS API: https://health.gov/our-work/national-health-initiatives/health-literacy/consumer-health-content/free-web-content/apis-developers
 - Illustration source (Free with trial): https://www.iconfinder.com/alekseyvanin
+- ChatGPT (debugging and element pre-creation): https://chat.openai.com 
 
 ___
 
